@@ -59,7 +59,7 @@ st.markdown("---")
 col1, col2 = st.columns([2, 3]) # Kolom kanan lebih lebar sedikit
 
 with col1:
-    st.subheader("🔍 Hasil Prediksi")
+    st.subheader("Hasil Prediksi")
     
     if st.button("Analisis Sekarang", use_container_width=True):
         # Prediksi Kategori
@@ -121,3 +121,4 @@ with col2:
 st.markdown("---")
 
 st.caption("Dikembangkan dengan Random Forest Algorithm | Data: Pollutant Standards Index Jogja 2020")
+
