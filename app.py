@@ -76,10 +76,10 @@ with col1:
             st.success(f"### {prediction} (Baik)")
             st.info("**Saran:** Udara sangat segar! Sangat baik untuk olahraga outdoor, bersepeda, atau jalan-jalan.")
         elif prediction == 'Moderate':
-            st.warning(f"###{prediction} (Sedang)")
+            st.warning(f"### {prediction} (Sedang)")
             st.info("**Saran:** Kelompok sensitif (asma, lansia, anak-anak) sebaiknya kurangi aktivitas berat di luar.")
         else:
-            st.error(f"###{prediction} (Tidak Sehat)")
+            st.error(f"### {prediction} (Tidak Sehat)")
             st.info("**Saran:** WAJIB pakai masker. Tutup ventilasi rumah. Hindari keluar jika tidak mendesak.")
 
         # Simpan data untuk grafik di kolom sebelah
@@ -121,4 +121,5 @@ with col2:
 st.markdown("---")
 
 st.caption("Dikembangkan dengan Random Forest Algorithm | Data: Pollutant Standards Index Jogja 2020")
+
 
