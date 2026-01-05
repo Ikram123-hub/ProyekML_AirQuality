@@ -6,7 +6,6 @@ import plotly.graph_objects as go
 # --- 1. CONFIGURATION ---
 st.set_page_config(
     page_title="Air Quality Jogja",
-    page_icon="🌿",
     layout="wide" # Menggunakan layout lebar agar lebih lega
 )
 
@@ -21,11 +20,11 @@ def load_model():
 model = load_model()
 
 if model is None:
-    st.error("⚠️ File 'model_kualitas_udara.pkl' tidak ditemukan. Pastikan file ada di folder yang sama.")
+    st.error("File 'model_kualitas_udara.pkl' tidak ditemukan. Pastikan file ada di folder yang sama.")
     st.stop()
 
 # --- 3. SIDEBAR (Input & Edukasi) ---
-st.sidebar.title("🎛️ Panel Kontrol")
+st.sidebar.title("Panel Kontrol")
 st.sidebar.write("Masukkan nilai konsentrasi polutan:")
 
 def user_input_features():
@@ -42,7 +41,7 @@ input_df = user_input_features()
 
 # Fitur Edukasi di Sidebar (Expander)
 st.sidebar.markdown("---")
-with st.sidebar.expander("📚 Apa arti istilah ini?"):
+with st.sidebar.expander("Apa arti istilah ini?"):
     st.write("""
     - **PM10:** Partikel debu halus (asap kendaraan, debu jalan).
     - **SO2:** Gas buang industri/kendaraan diesel.
@@ -52,7 +51,7 @@ with st.sidebar.expander("📚 Apa arti istilah ini?"):
     """)
 
 # --- 4. MAIN PAGE ---
-st.title("🌿 Prediksi Kualitas Udara Yogyakarta")
+st.title("Prediksi Kualitas Udara Yogyakarta")
 st.markdown("Aplikasi berbasis **Machine Learning** untuk memantau kesehatan udara.")
 st.markdown("---")
 
@@ -74,14 +73,14 @@ with col1:
         
         # Tampilkan Hasil Utama
         if prediction == 'Good':
-            st.success(f"### 🌱 {prediction} (Baik)")
-            st.info("💡 **Saran:** Udara sangat segar! Sangat baik untuk olahraga outdoor, bersepeda, atau jalan-jalan.")
+            st.success(f"### {prediction} (Baik)")
+            st.info("**Saran:** Udara sangat segar! Sangat baik untuk olahraga outdoor, bersepeda, atau jalan-jalan.")
         elif prediction == 'Moderate':
-            st.warning(f"### ☁️ {prediction} (Sedang)")
-            st.info("💡 **Saran:** Kelompok sensitif (asma, lansia, anak-anak) sebaiknya kurangi aktivitas berat di luar.")
+            st.warning(f"###{prediction} (Sedang)")
+            st.info("**Saran:** Kelompok sensitif (asma, lansia, anak-anak) sebaiknya kurangi aktivitas berat di luar.")
         else:
-            st.error(f"### ☠️ {prediction} (Tidak Sehat)")
-            st.info("💡 **Saran:** WAJIB pakai masker. Tutup ventilasi rumah. Hindari keluar jika tidak mendesak.")
+            st.error(f"###{prediction} (Tidak Sehat)")
+            st.info("**Saran:** WAJIB pakai masker. Tutup ventilasi rumah. Hindari keluar jika tidak mendesak.")
 
         # Simpan data untuk grafik di kolom sebelah
         st.session_state['proba_df'] = proba_df
@@ -89,7 +88,7 @@ with col1:
         st.session_state['prediction'] = prediction
 
 with col2:
-    st.subheader("📊 Analisis Detail")
+    st.subheader("Analisis Detail")
     
     # Cek apakah tombol sudah ditekan
     if 'predicted' in st.session_state:
@@ -120,4 +119,5 @@ with col2:
 
 # Footer
 st.markdown("---")
+
 st.caption("Dikembangkan dengan Random Forest Algorithm | Data: Pollutant Standards Index Jogja 2020")
